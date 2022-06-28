@@ -12,6 +12,7 @@ endif()
 
 find_package(JANA REQUIRED)
 find_package(Torch REQUIRED)
+find_package(Threads REQUIRED)
 
 set(MAGNETIC_FIELD_MAP_SOURCES
         magnetic_field_map.cpp
@@ -21,6 +22,6 @@ add_executable(phasm-example-magfieldmap ${MAGNETIC_FIELD_MAP_SOURCES})
 target_include_directories(phasm-example-magfieldmap PUBLIC
         ${JANA_INCLUDE_DIR}
         )
-target_link_libraries(phasm-example-magfieldmap ${JANA_LIBRARY})
+target_link_libraries(phasm-example-magfieldmap ${JANA_LIBRARY} Threads::Threads dl)
 #target_link_libraries(phasm-example-magfieldmap ${TORCH_LIBRARIES})
 
